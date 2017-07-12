@@ -1,6 +1,6 @@
 const http = require("http")
 const pathToRegexp = require("path-to-regexp")
-
+const log = require("debug")("openit:server")
 const get = require("./get")
 const processors = require("./processors")
 
@@ -12,7 +12,12 @@ const server = http.createServer(async (req, res) => {
     let location = null
     let processor = processors.base
     let pkgName
-    const parsedParams = regex.exec(req.url)
+
+    // Remove trailing slash
+    const requestUrl =
+      req.url.substr(-1) === "/" ? req.url.slice(0, -1) : req.url
+    const parsedParams = regex.exec(requestUrl)
+
     if (!parsedParams) {
       location = 404
     } else {
