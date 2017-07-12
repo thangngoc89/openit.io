@@ -4,6 +4,7 @@ const npmValidateName = require("validate-npm-package-name")
 
 /*::
   export type Processor = {
+    name: string,
     prefixes: Array<string>,
     validateName: (name: string) => boolean,
     apiUrl: (name: string) => string,,
@@ -22,6 +23,7 @@ const base /*:Processor*/ = {
 }
 
 const npm /*:Processor*/ = Object.assign({}, base, {
+  name: "npm",
   prefixes: ["js", "npm", "javascript"],
   validateName: name => {
     const validate = npmValidateName(name)
@@ -41,6 +43,7 @@ const npm /*:Processor*/ = Object.assign({}, base, {
   },
 })
 const composer /*:Processor*/ = Object.assign({}, base, {
+  name: "composer",
   prefixes: ["php", "composer", "packagist"],
   // TODO: Fix this. Naive validation, check for the present of "/" in string
   validateName: name => {
