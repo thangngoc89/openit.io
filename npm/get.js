@@ -1,10 +1,12 @@
 // @flow
 const JSONStream = require("JSONStream")
 const got = require("got")
+const log = require("debug")("openit:get")
 /*:: import type { Processor } from "./processors.js"*/
 
 const get = (pkgName /*:string*/, processor /*:Processor*/) =>
   new Promise((resolve, reject) => {
+    log(pkgName)
     if (!processor.validateName(pkgName)) {
       resolve(null)
     }
