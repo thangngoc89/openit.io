@@ -1,5 +1,24 @@
 # open.io
 
+View hosted source code of packages.
+
+## Usage
+
+https://openit.io/**<alias>**</strong>/**<package-name>**
+
+### npm 
+
+Aliases: /npm, /js, /javascript
+
+- Normal package: [https://openit.io/js/preact](https://openit.io/js/preact)
+- Scoped package: [https://openit.io/js/@phenomic/core](https://openit.io/js/@phenomic/core)
+
+### Component / Packagist
+
+Aliases: /php, /packagist, /composer
+
+- [https://openit.io/php/laravel/laravel](https://openit.io/php/laravel/laravel)
+
 ## Power users
 
 Add these function to your .bashrc/.profile:

@@ -58,6 +58,26 @@ Examples :
 
 </p>
 
+<h3>For power users</h3>
+
+<p>Add these function to your .bashrc/.profile:</p>
+
+<h4>Openit right from CLI</h4>
+
+<pre>function openit() {
+  open "http://openit.io/$1"
+}</pre>
+
+<p>Then call it <pre>$ openit js/preact</pre></p>
+
+<h4>Git clone with openit</h4>
+
+<pre>function clone() {
+  git clone $(curl -Ls -o /dev/null -w %{url_effective} https://openit.io/$1)
+}</pre>
+
+<p>Then call it <pre>$ clone js/preact</pre></p>
+
 <h3>Acknowledgements:</h3>
 
 <ul>
