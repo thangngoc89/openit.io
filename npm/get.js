@@ -1,23 +1,17 @@
+// @flow
 const JSONStream = require("JSONStream")
 const got = require("got")
-const hostedGitInfo = require("hosted-git-info")
-const validateName = require("validate-npm-package-name")
+/*:: import type { Processor } from "./processors.js"*/
 
-const nullPromise = new Promise(resolve => {
-  resolve(null)
-})
-
-const get = name => {
-  if (!name || name === "") {
-    return nullPromise
-  }
-  const validate = validateName(name)
-  if (!validate.validForNewPackages && !validate.validForNewPackages) {
-    return nullPromise
-  }
+const get = (pkgName /*:string*/, processor /*:Processor*/) => {
   return new Promise((resolve, reject) => {
+    if (!(processor.validatepkgName && processor.validatepkgName(pkgName))) {
+      resolve(null)
+    }
+
+    const url = processor.apiUrl(pkgName)
     const stream = got
-      .stream("https://registry.npmjs.com/" + name.replace("/", "%2f"), {
+      .stream(url, {
         headers: {
           "user-agent": "openit.io",
         },
@@ -29,16 +23,16 @@ const get = name => {
           resolve(null)
         }
       })
-      .pipe(JSONStream.parse("repository.url"))
+      .pipe(JSONStream.parse(processor.dataPath))
 
-    stream.on("data", url => {
-      const cleanUrl = hostedGitInfo.fromUrl(url, { noGitPlus: true })
-      if (cleanUrl) {
-        resolve(cleanUrl)
-      } else {
+    stream
+      .on("data", url => {
+        const finalUrl = processor.postprocessUrl(url)
+        resolve(finalUrl)
+      })
+      .on("error", err => {
         resolve(null)
-      }
-    })
+      })
   })
 }
 
