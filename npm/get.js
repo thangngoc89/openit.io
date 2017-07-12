@@ -18,6 +18,9 @@ const get = (pkgName /*:string*/, processor /*:Processor*/) =>
           "user-agent": "openit.io",
         },
       })
+      .on("end", () => {
+        log("end stream with got")
+      })
       .on("error", (err, data, res) => {
         if (err.statusCode === 404) {
           resolve(404)
@@ -29,9 +32,14 @@ const get = (pkgName /*:string*/, processor /*:Processor*/) =>
 
     stream
       .on("data", url => {
+        log("stream receive data")
         resolve(processor.postprocessUrl(url))
       })
       .on("error", err => {
+        resolve(null)
+      })
+      .on("end", () => {
+        log("Cannot find the repository url")
         resolve(null)
       })
   })

@@ -50,8 +50,10 @@ const server = http.createServer(async (req, res) => {
     }
 
     if (processor) {
+      log("Send request to processor")
       location = await get(pkgName, processor)
     } else {
+      log("no processor found")
       location = 404
     }
 
@@ -59,6 +61,8 @@ const server = http.createServer(async (req, res) => {
       res.writeHead(404)
       res.end()
     }
+    log("Sending location")
+
     res.writeHead(302, {
       Location: location ? location : processor.packageUrl(pkgName),
     })
