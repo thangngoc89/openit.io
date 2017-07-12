@@ -4,7 +4,9 @@ View hosted source code of packages.
 
 ## Usage
 
+```
 https://openit.io/**<alias>**</strong>/**<package-name>**
+```
 
 ### npm 
 
