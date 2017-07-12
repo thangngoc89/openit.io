@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,28 +5,53 @@
     <style>
       html {
         font-family : monospace;
-        padding : 50px 30px;
+        max-width: 500px;
+        padding : 50px 10px;
+        margin: auto;
       } 
       p {
         white-space : pre;
+      }
+      ul {
+        list-style-type: none;
+        margin:0;
+        padding: 10px;
+      }
+      li:before {
+        content: "–";
+        margin-right: 10px;
       }
     </style>
   </head>
   <body>
 
 <h1>openit.io</h1>
-<p>Open source code from a package name on <a href="https://npmjs.org">npm</a>.
+<p>Open source code from a package name multiple package repositories.
 
 
-Usage   : https://openit.io/js/<strong>&lt;package-name&gt;</strong>
+Usage   : https://openit.io/<strong>&lt;alias&gt;</strong>/<strong>&lt;package-name&gt;</strong>
 
-Example : 
-  - Normal package: <a href="https://openit.io/js/express">https://openit.io/js/express</a>
-  - Scoped package: <a href="https://openit.io/js/express">https://openit.io/js/@phenomic/phenomic</a>
-
-
-| By <a href="mailto:hi@khoanguyen.me">Khoa Nguyen</a>.
+Examples : 
 </p>
+
+<a href="https://npmjs.org"><h2>npm</h2></a>
+<p><strong>Aliases:</strong> /npm, /js, /javascript</p>
+<ul>
+  <li>Normal package: <a href="https://openit.io/js/preact">https://openit.io/js/preact</a></li>
+  <li>Scoped package: <a href="https://openit.io/js/@phenomic/phenomic">https://openit.io/js/@phenomic/phenomic</a></li>
+</ul>
+
+<p>
+| By <a href="mailto:hi@khoanguyen.me">Khoa Nguyen</a>.
+
+</p>
+
+<h3>Acknowledgements:</h3>
+
+<ul>
+  <li>Julian Gruber for <a href="http://ghub.io" target="_blank" rel="noopener noreferrer">ghub.io</a></li>
+  <li><a href="http://www.vultr.com/?ref=7161220" target="_blank" rel="noopener noreferrer">Vultr.com for hosting service</a></li>
+</ul>
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
