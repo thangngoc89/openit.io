@@ -34,8 +34,10 @@ const npm /*:Processor*/ = Object.assign({}, base, {
   packageUrl: name => "https://www.npmjs.com/package/" + name,
   dataPath: "repository.url",
   postprocessUrl: url => {
-    const cleanUrl = npmHostedGitInfo.fromUrl(url, { noGitPlus: true })
-    return cleanUrl ? cleanUrl : null
+    const opts = { noGitPlus: true }
+    const cleanUrl = npmHostedGitInfo.fromUrl(url, opts)
+
+    return cleanUrl ? cleanUrl.https(opts) : null
   },
 })
 const composer /*:Processor*/ = Object.assign({}, base, {
