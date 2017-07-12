@@ -10,10 +10,11 @@ https://openit.io/**<alias>**</strong>/**<package-name>**
 
 ### npm 
 
-Aliases: /npm, /js, /javascript
+Aliases: /npm, /js, /javascript, undefined
 
 - Normal package: [https://openit.io/js/preact](https://openit.io/js/preact)
 - Scoped package: [https://openit.io/js/@phenomic/core](https://openit.io/js/@phenomic/core)
+- Anything above without the alias is valid for npm: [https://openit.io/preact](https://openit.io/preact)
 
 ### Component / Packagist
 
