@@ -3,9 +3,9 @@ const JSONStream = require("JSONStream")
 const got = require("got")
 /*:: import type { Processor } from "./processors.js"*/
 
-const get = (pkgName /*:string*/, processor /*:Processor*/) => {
-  return new Promise((resolve, reject) => {
-    if (!(processor.validatepkgName && processor.validatepkgName(pkgName))) {
+const get = (pkgName /*:string*/, processor /*:Processor*/) =>
+  new Promise((resolve, reject) => {
+    if (!processor.validateName(pkgName)) {
       resolve(null)
     }
 
@@ -27,13 +27,11 @@ const get = (pkgName /*:string*/, processor /*:Processor*/) => {
 
     stream
       .on("data", url => {
-        const finalUrl = processor.postprocessUrl(url)
-        resolve(finalUrl)
+        resolve(processor.postprocessUrl(url))
       })
       .on("error", err => {
         resolve(null)
       })
   })
-}
 
 module.exports = get

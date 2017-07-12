@@ -11,11 +11,12 @@ const server = http.createServer(async (req, res) => {
   try {
     let location = null
     let processor = processors.base
+    let pkgName
     const parsedParams = regex.exec(req.url)
-    const pkgName = parsedParams[2]
     if (!parsedParams) {
       location = 404
     } else {
+      pkgName = parsedParams[2]
       processor = processors.find(
         a => a.prefixes.indexOf(parsedParams[1]) !== -1
       )
@@ -25,7 +26,6 @@ const server = http.createServer(async (req, res) => {
         location = 404
       }
     }
-
     if (location === 404) {
       res.writeHead(404)
       res.end()

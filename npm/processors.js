@@ -30,14 +30,31 @@ const npm /*:Processor*/ = Object.assign({}, base, {
     }
     return false
   },
-  apiUrl: name => "https://repository.npmjs.org/" + name.replace("/", "%2f"),
+  apiUrl: name => "https://registry.npmjs.org/" + name.replace("/", "%2f"),
   packageUrl: name => "https://www.npmjs.com/package/" + name,
   dataPath: "repository.url",
   postprocessUrl: url => {
-    const cleanUrl = hostedGitInfo.fromUrl(url, { noGitPlus: true })
+    const cleanUrl = npmHostedGitInfo.fromUrl(url, { noGitPlus: true })
     return cleanUrl ? cleanUrl : null
   },
 })
+const composer /*:Processor*/ = Object.assign({}, base, {
+  prefixes: ["php", "composer", "packagist"],
+  // TODO: Fix this. Naive validation, check for the present of "/" in string
+  validateName: name => {
+    const first = name.indexOf("/")
+    const last = name.lastIndexOf("/")
+    if (first !== -1 && first === last) {
+      return true
+    } else {
+      return false
+    }
+  },
+  apiUrl: name => `https://packagist.org/packages/${name}.json`,
+  packageUrl: name => "https://packagist.org/packages/" + name,
+  dataPath: "package.repository",
+  postprocessUrl: url => url,
+})
 
-module.exports = [npm]
+module.exports = [npm, composer]
 exports.base = base
