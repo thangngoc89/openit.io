@@ -5,13 +5,13 @@ const get = require("./get")
 const processors = require("./processors")
 
 const PORT = process.env.PORT || 3000
-const re = pathToRegexp("/:alias/:package(.*)")
+const regex = pathToRegexp("/:alias/:package(.*)")
 
 const server = http.createServer(async (req, res) => {
   try {
     let location = null
     let processor = processors.base
-    const parsedParams = re.exec(req.url)
+    const parsedParams = regex.exec(req.url)
     const pkgName = parsedParams[2]
     if (!parsedParams) {
       location = 404
