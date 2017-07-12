@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  proxy:
+    build: proxy
+    depends_on:
+      - npm
+    ports: 
+      - 80:80
+  npm:
+    build: npm
+    expose:
+      - 3000
