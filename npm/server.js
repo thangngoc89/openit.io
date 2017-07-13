@@ -4,7 +4,6 @@ const log = require("debug")("openit:server")
 const get = require("./get")
 const processors = require("./processors")
 
-const PORT = process.env.PORT || 3000
 const regex = pathToRegexp("/:alias/:package(.*)?")
 
 const server = http.createServer(async (req, res) => {
@@ -72,9 +71,4 @@ const server = http.createServer(async (req, res) => {
   }
 })
 
-server.listen(PORT, err => {
-  if (err) {
-    throw new Error(err)
-  }
-  console.log("Server is listening at http://localhost:" + PORT)
-})
+module.exports = server
