@@ -7,11 +7,10 @@ const processors = require("./processors")
 const regex = pathToRegexp("/:alias/:package(.*)?")
 
 const server = http.createServer(async (req, res) => {
+  let processor = processors.base
+  let location = null
+  let pkgName
   try {
-    let processor = processors.base
-    let location = null
-    let pkgName
-
     // Remove trailing slash
     const requestUrl =
       req.url.substr(-1) === "/" ? req.url.slice(0, -1) : req.url
@@ -43,9 +42,9 @@ const server = http.createServer(async (req, res) => {
       log("404")
     } 
     else {
-      // Normal case with alias and packageName
       pkgName = params[2]
       processor = processors.find(a => a.prefixes.indexOf(params[1]) !== -1)
+      log("Normal case with alias and packageName")
     }
 
     if (processor) {
@@ -61,14 +60,13 @@ const server = http.createServer(async (req, res) => {
       res.end()
     }
     log("Sending location")
-
-    res.writeHead(302, {
-      Location: location ? location : processor.packageUrl(pkgName),
-    })
-    res.end()
   } catch (err) {
     console.error(err)
   }
+  res.writeHead(302, {
+    Location: location ? location : processor.packageUrl(pkgName),
+  })
+  res.end()
 })
 
 module.exports = server
