@@ -3,5 +3,5 @@ version: '2'
 services:
   proxy:
     restart: always
-  npm:
+  main:
     restart: always
