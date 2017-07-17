@@ -59,5 +59,5 @@ const crates /*:Processor*/ = Object.assign({}, base, {
   dataPath: "crate.repository",
 })
 
-module.exports = [npm, composer]
+module.exports = [npm, composer, crates]
 exports.base = base
