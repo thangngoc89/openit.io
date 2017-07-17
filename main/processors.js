@@ -1,5 +1,4 @@
 // @flow
-const npmHostedGitInfo = require("hosted-git-info")
 const npmValidateName = require("validate-npm-package-name")
 
 /*::
@@ -10,7 +9,6 @@ const npmValidateName = require("validate-npm-package-name")
     apiUrl: (name: string) => string,,
     packageUrl: (name: string) => string,
     dataPath: string,
-    postprocessUrl: (url: string) => string | null
   }
 */
 const base /*:Processor*/ = {
@@ -19,7 +17,6 @@ const base /*:Processor*/ = {
   apiUrl: name => name,
   packageUrl: name => name,
   dataPath: "",
-  postprocessUrl: url => url,
 }
 
 const npm /*:Processor*/ = Object.assign({}, base, {
@@ -35,12 +32,6 @@ const npm /*:Processor*/ = Object.assign({}, base, {
   apiUrl: name => "https://registry.npmjs.org/" + name.replace("/", "%2f"),
   packageUrl: name => "https://www.npmjs.com/package/" + name,
   dataPath: "repository.url",
-  postprocessUrl: url => {
-    const opts = { noGitPlus: true }
-    const cleanUrl = npmHostedGitInfo.fromUrl(url, opts)
-
-    return cleanUrl ? cleanUrl.https(opts) : null
-  },
 })
 const composer /*:Processor*/ = Object.assign({}, base, {
   name: "composer",
@@ -58,7 +49,14 @@ const composer /*:Processor*/ = Object.assign({}, base, {
   apiUrl: name => `https://packagist.org/packages/${name}.json`,
   packageUrl: name => "https://packagist.org/packages/" + name,
   dataPath: "package.repository",
-  postprocessUrl: url => url,
+})
+// TODO: Add validate
+const crates /*:Processor*/ = Object.assign({}, base, {
+  name: "crates",
+  prefixes: ["crates", "crate", "rust", "cargo"],
+  apiUrl: name => `https://crates.io/api/v1/crates/${name}`,
+  packageUrl: name => "https://crates.io/crates/" + name,
+  dataPath: "crate.repository",
 })
 
 module.exports = [npm, composer]

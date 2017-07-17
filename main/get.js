@@ -47,7 +47,7 @@ const get = (pkgName /*:string*/, processor /*:Processor*/) =>
     stream
       .on("data", url => {
         log("stream receive data")
-        resolve(processor.postprocessUrl(url))
+        resolve(url)
       })
       .on("error", err => {
         resolve(null)

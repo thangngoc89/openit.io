@@ -8,7 +8,7 @@ View hosted source code of packages.
 https://openit.io/<alias>/<package-name>
 ```
 
-### npm 
+### npm (Javascript)
 
 Aliases: /npm, /js, /javascript, undefined
 
@@ -16,11 +16,20 @@ Aliases: /npm, /js, /javascript, undefined
 - Scoped package: [https://openit.io/js/@phenomic/core](https://openit.io/js/@phenomic/core)
 - Anything above without the alias is valid for npm: [https://openit.io/preact](https://openit.io/preact)
 
-### Component / Packagist
+### Packagist (PHP)
 
 Aliases: /php, /packagist, /composer
 
 - [https://openit.io/php/laravel/laravel](https://openit.io/php/laravel/laravel)
+
+### Crates (Rust)
+
+Aliases: /cargo, /crate, /crates, /rust
+
+- [https://openit.io/rust/libc](https://openit.io/rust/libc)
+- [https://openit.io/cargo/libc](https://openit.io/cargo/libc)
+- [https://openit.io/crates/libc](https://openit.io/crates/libc)
+- [https://openit.io/crate/libc](https://openit.io/crate/libc)
 
 ## Power users
 
