@@ -4,10 +4,10 @@ services:
   proxy:
     build: proxy
     depends_on:
-      - npm
+      - main
     ports: 
       - 80:80
-  npm:
-    build: npm
+  main:
+    build: main
     expose:
       - 3000
