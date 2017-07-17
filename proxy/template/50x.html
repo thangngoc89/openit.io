@@ -28,63 +28,13 @@
   </head>
   <body>
 
-<h1>500 - Internal Error</h1>
-<p>This is probably means I messed up something. <a href="https://twitter.com/khoanguyenme">Yell at me</a>.</p>
-<br /><br />
-<h2>openit.io</h2>
-<p>View hosted source code of packages.
+<h1>500 - Internal error</h1>
+<p>This is probably means I messed up something. <a href="https://twitter.com/khoanguyenme">Yell at me</a>.
 
 
-Usage    : https://openit.io/<strong>&lt;alias&gt;</strong>/<strong>&lt;package-name&gt;</strong>
 
-Examples : 
+<a href="/">← View usage at homepage - openit.io</a>
 </p>
-
-<a href="https://npmjs.org"><h2>npm</h2></a>
-<p><strong>Aliases:</strong> /npm, /js, /javascript, undefined</p>
-<ul>
-  <li>Normal package: <a href="https://openit.io/js/preact">https://openit.io/js/preact</a></li>
-  <li>Scoped package: <a href="https://openit.io/js/@phenomic/core">https://openit.io/js/@phenomic/core</a></li>
-  <li>Anything above without the alias is valid for npm: <a href="https://openit.io/preact">https://openit.io/preact</a></li>
-</ul>
-
-<a href="https://packagist.org/"><h2>Composer</h2></a>
-<p><strong>Aliases:</strong> /php, /composer, /packagist</p>
-<ul>
-  <li><a href="https://openit.io/php/laravel/laravel">https://openit.io/php/laravel/laravel</a></li>
-</ul>
-
-<p>
-| By <a href="mailto:hi@khoanguyen.me">Khoa Nguyen</a>. <a href="https://openit.io/js/openit.io">Source - Github</a>
-
-</p>
-
-<h3>For power users</h3>
-
-<p>Add these function to your .bashrc/.profile:</p>
-
-<h4>Openit right from CLI</h4>
-
-<pre>function openit() {
-  open "http://openit.io/$1"
-}</pre>
-
-<p>Then call it <pre>$ openit js/preact</pre></p>
-
-<h4>Git clone with openit</h4>
-
-<pre>function clone() {
-  git clone $(curl -Ls -o /dev/null -w %{url_effective} https://openit.io/$1)
-}</pre>
-
-<p>Then call it <pre>$ clone js/preact</pre></p>
-
-<h3>Acknowledgements:</h3>
-
-<ul>
-  <li>Julian Gruber for <a href="http://ghub.io" target="_blank" rel="noopener noreferrer">ghub.io</a></li>
-  <li><a href="http://www.vultr.com/?ref=7161220" target="_blank" rel="noopener noreferrer">Vultr.com for hosting service</a></li>
-</ul>
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
