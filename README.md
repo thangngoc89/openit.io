@@ -5,7 +5,7 @@ View hosted source code of packages.
 ## Usage
 
 ```
-https://openit.io/**<alias>**</strong>/**<package-name>**
+https://openit.io/<alias>/<package-name>
 ```
 
 ### npm 
