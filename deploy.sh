@@ -1,3 +1,5 @@
-eval $(docker-machine env openit)
-docker-compose -f docker-compose.yml -f prod.yml up -d --build
+#/bin/bash -e
+
+eval $(docker-machine env do)
+docker-compose -f prod.yml up -d --build
 eval $(docker-machine env -u)

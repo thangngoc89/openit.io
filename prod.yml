@@ -2,6 +2,29 @@ version: '2'
 
 services:
   proxy:
+    build: proxy
+    depends_on:
+      - main
+    expose: 
+      - 80
     restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=openit"
+      - "traefik.frontend.rule=Host:openit.io"
+    networks:
+      - web
+
   main:
+    build: main
+    expose:
+      - 3000
     restart: always
+    networks:
+      - web
+
+
+networks:
+  web:
+    external:
+      name: traefik_webgateway
